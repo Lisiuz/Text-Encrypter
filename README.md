@@ -1,6 +1,7 @@
-# Text Encrypter/Decrypter - Learn Python with Projects
+# Learn Python with Projects - Text Encrypter/Decrypter
 
-A simple and modern GUI application built with PySide6 for encrypting and decrypting text using various algorithms. This application provides a user-friendly interface for securing your sensitive information.
+A simple and modern GUI application built with PySide6 for encrypting and decrypting text using various algorithms. This project is meant for beginners.
+
 
 ## Description
 
