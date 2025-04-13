@@ -5,19 +5,18 @@ A simple and modern GUI application built with PySide6 for encrypting and decryp
 
 ## Description
 
-This application is a demonstration project designed to teach Python, PySide6, and related concepts to students. It allows users to encrypt and decrypt text using a variety of methods and features a clean and intuitive Material Design interface.
+This application is a demonstration project designed to teach Python, PySide6, and related concepts to students. It allows users to encrypt and decrypt text using a variety of methods and features a clean and intuitive interface.
 
 ## Features
 
 *   Modern GUI built with PySide6
-*   Material Design theme
 *   Multiple encryption algorithms (DemoEncrypt, Caesar Cypher, ASCII, HASH, SHA256)
 *   Customizable input dialog for Caesar Cypher sliding
 *   Clear and readable output
 
 ## Files Included
 
-*   `main.py`: The main Python file containing the GUI application code.
+*   `main.py`: The main Python file containing the application code.
 *   `README.md`: This file, providing information about the application.
 *   `requirements.txt`: A list of the required dependencies to install using pip.
      (pip install -r /path/to/requirements.txt)
