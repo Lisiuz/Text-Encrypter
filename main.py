@@ -1,3 +1,15 @@
+"""
+Text Encryptor/Decryptor Application -  Learn Python with Projects
+
+A GUI application that provides multiple encryption and decryption algorithms including:
+- Custom Demo Encryption
+- Caesar Cipher
+- ASCII encoding
+- HASH Algorithm
+- SHA256
+
+The application features a modern UI with Material Design-inspired styling.
+"""
 import sys
 import hashlib
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
@@ -7,6 +19,24 @@ from PySide6.QtGui import QPalette, QColor
 
 
 def encrypt_text(text):
+    """
+    Encrypts text using a custom algorithm.
+
+    The encryption process:
+    1. For each word longer than 2 characters:
+       - Takes the first character
+       - Takes the last character
+       - Takes characters from index 2 to second-to-last
+       - Takes the second character
+       - Combines them in this order: first + last + middle + second
+    2. Converts the first character of each word to its ASCII code
+    3. Joins all words with spaces
+
+    Args:
+        text (str): The input text to encrypt
+        Returns:
+        str: The encrypted text, or empty string if input is empty
+    """
     res = ""
     if text:
         for word in text.split():
@@ -24,6 +54,9 @@ def encrypt_text(text):
 
 
 def decrypt_text(text):
+    """
+    Decrypts text that was encrypted with the custom encrypt_text algorithm.
+    """
     res = ""
     if text:
         for word in text.split():
@@ -54,7 +87,9 @@ def decrypt_text(text):
 
 
 def cesare_enc(text, sliding):
-
+    """
+    Encrypts text using Caesar Cipher algorithm with custom shift.
+    """
     ces_enc = ""
     for c in text:
         ces_enc += chr(ord(c) + int(sliding))
@@ -62,14 +97,16 @@ def cesare_enc(text, sliding):
 
 
 def cesare_dec(text, sliding):
-
+    """
+    Decrypts text using Caesar Cipher algorithm with custom shift.
+    """
     ces_dec = ""
     for c in text:
         ces_dec += chr(ord(c) - int(sliding))
     return ces_dec
 
 
-def cesare_enc11(text):
+""" def cesare_enc11(text):
     ces_enc = ""
     for c in text:
         ces_enc += chr(ord(c) + 11)
@@ -80,7 +117,7 @@ def cesare_dec11(text):
     ces_dec = ""
     for c in text:
         ces_dec += chr(ord(c) - 11)
-    return ces_dec
+    return ces_dec """
 
 
 def hash_enc(text):
@@ -92,6 +129,17 @@ def hash_dec(text):
     return "Non è possibile decodificare l'algoritmo di HASH"
 
 
+"""
+    Encrypts text using SHA-256 cryptographic hash function.
+
+    Args:
+        text (str): The text to hash
+
+    Returns:
+        str: The SHA-256 hash as a hexadecimal string
+    """
+
+
 def sha256_enc(text):
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
@@ -101,6 +149,9 @@ def sha256_dec(text):
 
 
 def ascii_enc(text):
+    """
+    Encodes text to ASCII code points separated by spaces.
+    """
     res = ""
     for c in text:
         res += str(ord(c)) + " "
@@ -108,7 +159,9 @@ def ascii_enc(text):
 
 
 def ascii_dec(text):
-
+    """
+    Decodes text from ASCII code points to characters.
+    """
     res = ""
     txt_lst = text.split()
     for i in txt_lst:
@@ -121,11 +174,22 @@ def ascii_dec(text):
 
 
 class MainWindow(QWidget):
+    """
+    Main application window for the Text Encryptor/Decryptor.
+
+    Provides a GUI interface with:
+    - Algorithm selection dropdown
+    - Text input field
+    - Encrypt/Decrypt buttons
+    - Results display
+    """
+
     def __init__(self):
+        """Initialize the main window and UI components."""
         super().__init__()
 
         self.setWindowTitle("Text Encrypter/Decrypter")
-        self.input_label = QLabel("Chiave cifratura:")
+        self.input_label = QLabel("Algoritmo cifratura:")
         self.input_label.setStyleSheet("font-size: 16px; color: #CFD8DC;")
         self.menu_tendina = QComboBox()
         self.menu_tendina.addItem("DemoEncrypt")
@@ -164,6 +228,12 @@ class MainWindow(QWidget):
         self.decrypt_button.clicked.connect(self.on_decrypt_clicked)
 
     def on_encrypt_clicked(self):
+        """
+        Handle encrypt button click event.
+
+        Encrypts the input text using the selected algorithm and displays the result.
+        For Caesar Cipher, prompts user for shift amount.
+        """
         text = self.input_text.text()
         if text:
             if self.menu_tendina.currentText() == "DemoEncrypt":
@@ -173,7 +243,7 @@ class MainWindow(QWidget):
                                                   "Inserisci il numero di scostamenti per Caesar Cypher (1-22): ", 3, 1, 22)
 
                 if ok:
-                    encrypted_text = cesare_enc(text,  sliding)
+                    encrypted_text = cesare_enc(text, sliding)
                 else:
                     encrypted_text = "Seleziona un algoritmo di cifratura"
             elif self.menu_tendina.currentText() == "HASH Algorithm":
@@ -185,6 +255,12 @@ class MainWindow(QWidget):
             self.output_text.setText(str(encrypted_text))
 
     def on_decrypt_clicked(self):
+        """
+        Handle decrypt button click event.
+
+        Decrypts the input text using the selected algorithm and displays the result.
+        For Caesar Cipher, prompts user for shift amount.
+        """
         text = self.input_text.text()
         if text:
             if self.menu_tendina.currentText() == "DemoEncrypt":
@@ -206,6 +282,12 @@ class MainWindow(QWidget):
 
 
 if __name__ == "__main__":
+    """
+    Entry point for the application.
+
+    Initializes the QApplication, sets up the color palette and styling,
+    creates and shows the main window, and starts the event loop.
+    """
     app = QApplication(sys.argv)
 
     # Material Design Color Palette
