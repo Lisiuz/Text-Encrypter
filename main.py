@@ -106,20 +106,6 @@ def cesare_dec(text, shifting):
     return ces_dec
 
 
-""" def cesare_enc11(text):
-    ces_enc = ""
-    for c in text:
-        ces_enc += chr(ord(c) + 11)
-    return ces_enc
-
-
-def cesare_dec11(text):
-    ces_dec = ""
-    for c in text:
-        ces_dec += chr(ord(c) - 11)
-    return ces_dec """
-
-
 def hash_enc(text):
     res = hash(text)
     return res
