@@ -20,6 +20,7 @@ This application is a demonstration project designed to teach Python, PySide6, a
 *   `README.md`: This file, providing information about the application.
 *   `requirements.txt`: A list of the required dependencies to install using pip.
      (pip install -r /path/to/requirements.txt)
+*   `LICENSE`: MIT License file
 
 ## Usage
 
