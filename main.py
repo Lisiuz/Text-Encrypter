@@ -128,7 +128,7 @@ class MainWindow(QWidget):
         self.input_label = QLabel("Chiave cifratura:")
         self.input_label.setStyleSheet("font-size: 16px; color: #CFD8DC;")
         self.menu_tendina = QComboBox()
-        self.menu_tendina.addItem("LukeEncrypt")
+        self.menu_tendina.addItem("DemoEncrypt")
         self.menu_tendina.addItem("Caesar Cipher")
         self.menu_tendina.addItem("ASCII")
         self.menu_tendina.addItem("HASH Algorithm")
@@ -166,11 +166,12 @@ class MainWindow(QWidget):
     def on_encrypt_clicked(self):
         text = self.input_text.text()
         if text:
-            if self.menu_tendina.currentText() == "LukeEncrypt":
+            if self.menu_tendina.currentText() == "DemoEncrypt":
                 encrypted_text = encrypt_text(text)
             elif self.menu_tendina.currentText() == "Caesar Cipher":
                 sliding, ok = QInputDialog.getInt(self, "Quanti scostamenti di Caesar Cypher",
                                                   "Inserisci il numero di scostamenti per Caesar Cypher (1-22): ", 3, 1, 22)
+
                 if ok:
                     encrypted_text = cesare_enc(text,  sliding)
                 else:
@@ -186,7 +187,7 @@ class MainWindow(QWidget):
     def on_decrypt_clicked(self):
         text = self.input_text.text()
         if text:
-            if self.menu_tendina.currentText() == "LukeEncrypt":
+            if self.menu_tendina.currentText() == "DemoEncrypt":
                 decrypted_text = decrypt_text(text)
             elif self.menu_tendina.currentText() == "Caesar Cipher":
                 sliding, ok = QInputDialog.getInt(self, "Quanti scostamenti di Caesar Cypher",

@@ -23,7 +23,7 @@ This application is a demonstration project designed to teach Python, PySide6, a
 
 ## Usage
 
-1.  Run `main.py` to start the application.
+1.  Run `main.py` to start the application. (python.exe main.py)
 2.  Select an encryption algorithm from the dropdown menu.
 3.  Enter the text you want to encrypt or decrypt in the input field.
 4.  Click the "Encrypt Text" or "Decrypt Text" button.
