@@ -86,23 +86,23 @@ def decrypt_text(text):
         return ""
 
 
-def cesare_enc(text, sliding):
+def cesare_enc(text, shifting):
     """
     Encrypts text using Caesar Cipher algorithm with custom shift.
     """
     ces_enc = ""
     for c in text:
-        ces_enc += chr(ord(c) + int(sliding))
+        ces_enc += chr(ord(c) + int(shifting))
     return ces_enc
 
 
-def cesare_dec(text, sliding):
+def cesare_dec(text, shifting):
     """
     Decrypts text using Caesar Cipher algorithm with custom shift.
     """
     ces_dec = ""
     for c in text:
-        ces_dec += chr(ord(c) - int(sliding))
+        ces_dec += chr(ord(c) - int(shifting))
     return ces_dec
 
 
@@ -239,11 +239,11 @@ class MainWindow(QWidget):
             if self.menu_tendina.currentText() == "DemoEncrypt":
                 encrypted_text = encrypt_text(text)
             elif self.menu_tendina.currentText() == "Caesar Cipher":
-                sliding, ok = QInputDialog.getInt(self, "Quanti scostamenti di Caesar Cypher",
-                                                  "Inserisci il numero di scostamenti per Caesar Cypher (1-22): ", 3, 1, 22)
+                shifting, ok = QInputDialog.getInt(self, "Quanti scostamenti di Caesar Cypher",
+                                                   "Inserisci il numero di scostamenti per Caesar Cypher (1-22): ", 3, 1, 22)
 
                 if ok:
-                    encrypted_text = cesare_enc(text, sliding)
+                    encrypted_text = cesare_enc(text, shifting)
                 else:
                     encrypted_text = "Seleziona un algoritmo di cifratura"
             elif self.menu_tendina.currentText() == "HASH Algorithm":
@@ -266,10 +266,10 @@ class MainWindow(QWidget):
             if self.menu_tendina.currentText() == "DemoEncrypt":
                 decrypted_text = decrypt_text(text)
             elif self.menu_tendina.currentText() == "Caesar Cipher":
-                sliding, ok = QInputDialog.getInt(self, "Quanti scostamenti di Caesar Cypher",
-                                                  "Inserisci il numero di scostamenti per Caesar Cypher (1-22): ", 3, 1, 22)
+                shifting, ok = QInputDialog.getInt(self, "Quanti scostamenti di Caesar Cypher",
+                                                   "Inserisci il numero di scostamenti per Caesar Cypher (1-22): ", 3, 1, 22)
                 if ok:
-                    decrypted_text = cesare_dec(text, sliding)
+                    decrypted_text = cesare_dec(text, shifting)
                 else:
                     decrypted_text = "Seleziona un algoritmo di cifratura"
             elif self.menu_tendina.currentText() == "HASH Algorithm":
